@@ -3,6 +3,7 @@ import promMid from "express-prometheus-middleware";
 import createHttpError from "http-errors";
 import logger from "morgan";
 
+import cors from "cors";
 import authMiddleware from "./middleware/auth";
 import indexRouter from "./routes/index";
 
@@ -10,6 +11,7 @@ const app = express();
 const port = 3000;
 
 app.use(logger("dev"));
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(authMiddleware);
