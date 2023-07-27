@@ -8,9 +8,10 @@ import {
 } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import { useEpochTime } from "../api/api";
+import Error from "./Error";
 
 function TimeDifference() {
-  const { data, isSuccess, isLoading, isRefetching } = useEpochTime();
+  const { data, isSuccess, isLoading, isRefetching, isError } = useEpochTime();
   const [difference, setDifference] = useState(0);
 
   const calculateDifference = useCallback(() => {
@@ -26,7 +27,7 @@ function TimeDifference() {
     calculateDifference();
     const interval = setInterval(calculateDifference, 1000);
     return () => clearInterval(interval);
-  }, [calculateDifference]);
+  }, []);
 
   const formatDuration = (ms: number) => {
     //  return format as 00:00:00
@@ -39,12 +40,17 @@ function TimeDifference() {
     return `${pad(hours)}:${pad(minutes % 60)}:${pad(seconds % 60)}`;
   };
 
+  if (isError) return <Error />;
+
   return (
     <Flex justify="center" align="center">
       <Stat>
         <StatLabel>Server Time</StatLabel>
         <StatNumber>
-          <Skeleton isLoaded={!isLoading && !isRefetching}>
+          <Skeleton
+            isLoaded={!isLoading && !isRefetching}
+            data-testid="skeleton"
+          >
             {data?.epoch}
           </Skeleton>
         </StatNumber>
