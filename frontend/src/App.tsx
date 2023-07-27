@@ -6,7 +6,7 @@ import TimeDifference from "./components/TimeDifference";
 function App() {
   return (
     <Container maxW="1920px" my={[4, null, 12]}>
-      <Heading my={8}>Connex One Test</Heading>
+      <Heading my={8}>Connex One Technical Test</Heading>
       <SplitView>
         <Card p={4}>
           <TimeDifference />

@@ -27,7 +27,7 @@ function TimeDifference() {
     calculateDifference();
     const interval = setInterval(calculateDifference, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [calculateDifference]);
 
   const formatDuration = (ms: number) => {
     //  return format as 00:00:00
