@@ -12,6 +12,8 @@ const port = 3000;
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(authMiddleware);
+
 app.use(
   promMid({
     metricsPath: "/metrics",
@@ -19,7 +21,6 @@ app.use(
     requestDurationBuckets: [0.1, 0.5, 1, 1.5],
   })
 );
-app.use(authMiddleware);
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
@@ -36,6 +37,4 @@ app.use(function (err, req, res, next) {
   res.json({ error: err });
 } as ErrorRequestHandler);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+export default app;

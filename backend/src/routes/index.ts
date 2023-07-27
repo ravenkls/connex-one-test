@@ -2,8 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-/* GET epoch */
-router.get("/time", function (req, res, next) {
+router.get("/time", (req, res) => {
   const epoch = Math.floor(Date.now() / 1000);
   res.json({ epoch });
 });
