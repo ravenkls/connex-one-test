@@ -4,6 +4,8 @@ This is a web application that displays the current server time and the time dif
 
 ## Getting Started
 
+### Manual Setup
+
 To get started with this project follow these steps:
 
 1. Clone the repository
@@ -12,7 +14,7 @@ To get started with this project follow these steps:
 git clone https://github.com/ravenkls/connex-one-test.git
 ```
 
-### Setting up the Frontend
+#### Setting up the Frontend
 
 1. Install the frontend dependencies
 
@@ -28,7 +30,7 @@ yarn install
 yarn dev
 ```
 
-### Setting up the Backend
+#### Setting up the Backend
 
 1. Install the backend dependencies
 
@@ -44,7 +46,14 @@ yarn install
 yarn dev
 ```
 
-### Opening the application
+### Run with Docker
+If you want to instead, you can start it using Docker Compose. To do this, run the following command:
+
+```bash
+docker-compose up
+```
+
+## Opening the application
 
 Once the frontend and backend servers are running, open your browser and navigate to http://localhost:5173
 
