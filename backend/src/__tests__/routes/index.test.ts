@@ -31,7 +31,6 @@ describe("routes/index", () => {
         .set("Authorization", "mysecrettoken");
 
       expect(response.status).toBe(200);
-      // you may need to add more assertions here depending on the specific format of your metrics
     });
   });
 });
